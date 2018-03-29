@@ -1,7 +1,7 @@
 extern crate libc;
 extern crate snips_nlu_ffi;
 
-use snips_nlu_ffi::{NLURESULT, Opaque};
+use snips_nlu_ffi::{SNIPS_RESULT, Opaque};
 
 #[doc(hidden)]
 #[macro_export]
@@ -17,10 +17,10 @@ macro_rules! export_c_symbol {
     }
 }
 
-export_c_symbol!(ffi_nlu_engine_create_from_dir, fn nlu_engine_create_from_dir(root_dir: *const libc::c_char, client: *mut *const Opaque) -> NLURESULT);
-export_c_symbol!(ffi_nlu_engine_create_from_zip, fn nlu_engine_create_from_zip(zip: *const libc::c_uchar, zip_size: libc::c_uint, client: *mut *const Opaque) -> NLURESULT);
-export_c_symbol!(ffi_nlu_engine_run_parse_into_json, fn nlu_engine_run_parse_into_json(client: *const Opaque, input: *const libc::c_char, result_json: *mut *const libc::c_char) -> NLURESULT);
-export_c_symbol!(ffi_nlu_engine_get_last_error, fn nlu_engine_get_last_error(error: *mut *const libc::c_char) -> NLURESULT);
-export_c_symbol!(ffi_nlu_engine_destroy_string, fn nlu_engine_destroy_string(string: *mut libc::c_char) -> NLURESULT);
-export_c_symbol!(ffi_nlu_engine_destroy_client, fn nlu_engine_destroy_client(client: *mut Opaque) -> NLURESULT);
-export_c_symbol!(ffi_nlu_engine_get_model_version, fn nlu_engine_get_model_version(version: *mut *const libc::c_char) -> NLURESULT);
+export_c_symbol!(ffi_snips_nlu_engine_create_from_dir, fn snips_nlu_engine_create_from_dir(root_dir: *const libc::c_char, client: *mut *const Opaque) -> SNIPS_RESULT);
+export_c_symbol!(ffi_snips_nlu_engine_create_from_zip, fn snips_nlu_engine_create_from_zip(zip: *const libc::c_uchar, zip_size: libc::c_uint, client: *mut *const Opaque) -> SNIPS_RESULT);
+export_c_symbol!(ffi_snips_nlu_engine_run_parse_into_json, fn snips_nlu_engine_run_parse_into_json(client: *const Opaque, input: *const libc::c_char, result_json: *mut *const libc::c_char) -> SNIPS_RESULT);
+export_c_symbol!(ffi_snips_nlu_engine_get_last_error, fn snips_nlu_engine_get_last_error(error: *mut *const libc::c_char) -> SNIPS_RESULT);
+export_c_symbol!(ffi_snips_nlu_engine_destroy_string, fn snips_nlu_engine_destroy_string(string: *mut libc::c_char) -> SNIPS_RESULT);
+export_c_symbol!(ffi_snips_nlu_engine_destroy_client, fn snips_nlu_engine_destroy_client(client: *mut Opaque) -> SNIPS_RESULT);
+export_c_symbol!(ffi_snips_nlu_engine_get_model_version, fn snips_nlu_engine_get_model_version(version: *mut *const libc::c_char) -> SNIPS_RESULT);
